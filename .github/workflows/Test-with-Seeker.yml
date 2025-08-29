@@ -11,6 +11,9 @@ jobs:
         with:
           java-version: 21
           distribution: temurin
+      
+      - name: Copy build artifacts
+        run: cp target/api.jar test/api.jar
         
       # Run all Cypress tests
       - name: Cypress run
