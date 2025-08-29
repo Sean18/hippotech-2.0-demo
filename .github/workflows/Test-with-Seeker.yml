@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Java
-        uses: actions/setup-java@4
+        uses: actions/setup-java@v4
       # Run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
