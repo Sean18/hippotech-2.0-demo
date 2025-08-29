@@ -1,0 +1,17 @@
+name: Run Automated Tests with Seeker
+
+on: push
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@4
+      # Run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          start: java -jar target/api.jar
