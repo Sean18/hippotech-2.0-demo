@@ -25,4 +25,5 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: ./test
-          start: java -javaagent:./seeker-agent.jar -jar api.jar
+          start: java -jar api.jar
+          #start: java -javaagent:./seeker-agent.jar -jar api.jar
