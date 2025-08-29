@@ -17,7 +17,7 @@ jobs:
 
       - name: Setup Seeker Agent
         run: |
-          sh -c "$( curl -k -X GET -fsSL --header 'Accept: application/x-sh' 'https://seekerin.poc.blackduck.com/rest/api/latest/installers/agents/scripts/JAVA?osFamily=LINUX&downloadWith=curl&projectKey=hippotech_github&webServer=OTHER&flavor=DEFAULT&agentName=&accessToken=')"
+          sh -c "$( curl -k -X GET -fsSL --header 'Accept: application/x-sh' 'https://seeker.field-test.blackduck.com/rest/api/latest/installers/agents/scripts/JAVA?osFamily=LINUX&downloadWith=curl&projectKey=hippotech_github&webServer=OTHER&flavor=DEFAULT&agentName=&accessToken=')"
           cp seeker/seeker-agent.jar test/seeker-agent.jar
         
       # Run all Cypress tests
