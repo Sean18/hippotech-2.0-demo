@@ -14,10 +14,15 @@ jobs:
       
       - name: Copy build artifacts
         run: cp target/api.jar test/api.jar
+
+      - name: Setup Seeker Agent
+        run: |
+          sh -c "$( curl -k -X GET -fsSL --header 'Accept: application/x-sh' 'https://seekerin.poc.blackduck.com/rest/api/latest/installers/agents/scripts/JAVA?osFamily=LINUX&downloadWith=curl&projectKey=hippotech_github&webServer=OTHER&flavor=DEFAULT&agentName=&accessToken=')"
+          cp seeker/seeker-agent.jar test/seeker-agent.jar
         
       # Run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           working-directory: ./test
-          start: java -jar api.jar
+          start: java -jar api.jar -javaagent:seeker-agent.jar
