@@ -16,5 +16,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          project: ./test
+          working-directory: ./test
           start: java -jar target/api.jar
