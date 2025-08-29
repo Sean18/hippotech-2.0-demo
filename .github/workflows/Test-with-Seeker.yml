@@ -15,11 +15,6 @@ jobs:
       - name: Copy build artifacts
         run: cp target/api.jar test/api.jar
 
-      #- name: Setup Seeker Agent
-      #  run: |
-      #    sh -c "$( curl -k -X GET -fsSL --header 'Accept: application/x-sh' 'https://seeker.field-test.blackduck.com/rest/api/latest/installers/agents/scripts/JAVA?osFamily=LINUX&downloadWith=curl&projectKey=hippotech_github&webServer=OTHER&flavor=DEFAULT&agentName=&accessToken=')"
-      #    cp seeker/seeker-agent.jar test/seeker-agent.jar
-
       
       - uses: Sean18/SeekerAction@main
         with:
@@ -33,6 +28,5 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: ./test
-          #start: java -jar api.jar
           start: java -javaagent:./seeker-agent.jar -jar api.jar
           wait-on: 'http://localhost:3001'
